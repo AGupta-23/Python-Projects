@@ -1,0 +1,70 @@
+QR Code Generator - Summary of New Concepts
+
+Libraries
+
+-   qrcode - Generates QR codes.
+-   os - Interacts with the operating system (paths, files,
+    directories).
+-   PIL (Pillow) - Image processing library used by qrcode.
+
+Basic QR Code
+
+-   qrcode.make(data) - Creates a QR code directly from data.
+-   img.save(filename) - Saves the image to disk.
+
+OS & File Paths
+
+-   __file__ - Path of the current Python script.
+-   os.path.abspath(path) - Returns the absolute path.
+-   os.path.dirname(path) - Returns the directory containing the path.
+-   os.path.join(folder, file) - Safely joins folder and filename.
+
+Advanced QRCode API
+
+-   qrcode.QRCode(...) - Creates a configurable QR Code object.
+-   version - Initial QR code size (Version 1 = 21×21 modules).
+-   error_correction - Controls damage recovery.
+    -   L ≈ 7%
+    -   M ≈ 15%
+    -   Q ≈ 25%
+    -   H ≈ 30%
+-   box_size - Pixel size of each QR module.
+-   border - White margin around the QR code.
+
+Methods
+
+-   qr.add_data(data) - Adds text/URL to the QR object.
+-   qr.make(fit=True) - Generates the QR matrix and automatically
+    increases the version if needed.
+-   qr.make_image(fill_color=..., back_color=...) - Creates a colored QR
+    image.
+-   img.save(path) - Saves the generated image.
+
+Common Errors
+
+-   ModuleNotFoundError - Package not installed in the current Python
+    environment.
+-   ValueError: unknown color specifier - Invalid color name
+    (e.g. “back” instead of “black”).
+
+Key Concepts
+
+-   Current Working Directory (CWD): Folder from which the program is
+    run.
+-   Script Directory: Folder where the Python file is stored.
+-   Relative Path: e.g. LinkedIn.png
+-   Absolute Path: e.g. D:\PythonProjects\01_QR-Generator\LinkedIn.png
+-   Object: qr is a QRCode object storing configuration and data.
+-   Module: The small square inside a QR code.
+-   Quiet Zone: The border around a QR code that helps scanners detect
+    it.
+
+Typical Workflow
+
+1.  Import libraries.
+2.  Create QRCode object.
+3.  Configure version, error correction, box size, and border.
+4.  Add data.
+5.  Generate QR matrix with make().
+6.  Convert to image with make_image().
+7.  Save using save().
